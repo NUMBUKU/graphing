@@ -3,17 +3,21 @@
 
 # include <stdlib.h>
 
-typedef struct {
+const size_t FSIZE = sizeof(float);
+
+typedef struct vect_t{
     float * data;
     size_t size;
 } Vector;
 
-Vector newVector (size_t size);
+Vector * new_vector (Vector * arr, size_t size);
 
-void push_back (Vector * arr, float x);
+int push_back (Vector * arr, float x);
 
-void pop_back (Vector * arr);
+int pop_back (Vector * arr);
 
 void dealloc (Vector * arr);
+
+void print_vector (Vector * arr, int precision);
 
 # endif // ARR_H

@@ -1,33 +1,53 @@
-# include "arr.h"
+# include <stdio.h>
 
-Vector * newVector (size_t size){
-    Vector v = {0};
+# include <stdlib.h>
 
-    v.data = ( float * ) malloc(size);
-    v.size = size;
+const size_t FSIZE = sizeof(float);
 
-    return &v;
+typedef struct vect_t{
+    float * data;
+    size_t size;
+} Vector;
+
+int new_vector (Vector * arr, size_t size){
+    float * data = ( float * ) malloc(size * FSIZE);
+
+    if (data == NULL) return 1; // handle allocation error
+
+    arr->data = data;
+    arr->size = size;
+
+    return 0;
 }
 
-void push_back (Vector * arr, float x){
-    float * temp = ( float * ) malloc(arr->size + 1);
+int push_back (Vector * arr, float x){
+    float * data = ( float * ) realloc(arr->data, (arr->size + 1) * FSIZE);
 
-    for (int i = 0; i < arr->size; i++) temp[i] = arr->data[i];
-    temp[arr->size] = x;
+    if (data == NULL) return 1; // handle allocation error
 
-    free(arr->data);
-    arr->data = temp;
+    arr->data = data;
+    arr->data[arr->size] = x;
+    arr->size++;
+
+    return 0;
 }
 
-void pop_back (Vector * arr){
-    float * temp = ( float * ) malloc(arr->size - 1);
+int pop_back (Vector * arr){
+    float * data = ( float * ) realloc(arr->data, (arr->size - 1) * FSIZE);
 
-    for (int i = 0; i < arr->size - 1; i++) temp[i] = arr->data[i];
+    if (data == NULL) return 1; // handle allocation error
 
-    free(arr->data);
-    arr->data = temp;
+    arr->data = data;
+    arr->size--;
+
+    return 0;
 }
 
 void dealloc (Vector * arr){
     free(arr->data);
+}
+
+void print_vector(Vector * arr, int precision){
+    for (int i = 0; i < arr->size; i++)
+        printf("%.*f ", precision, arr->data[i]);
 }
