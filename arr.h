@@ -1,12 +1,12 @@
 # ifndef ARR_H
 # define ARR_H
 
+# include <stdlib.h>
+# include <stdio.h>
+
 # ifdef __cplusplus
 extern "C" {
 # endif
-
-# include <stdlib.h>
-# include <stdio.h>
 
 /// @brief A vector structure, contains the data array and the size
 typedef struct vect_t{
