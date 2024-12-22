@@ -1,6 +1,6 @@
 # include <stdio.h>
 
-# include "arr.c"
+# include "arr.h"
 
 const int size = 5;
 

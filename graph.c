@@ -6,7 +6,7 @@ int create_graph (Vector * x_array, Vector * y_array){
     return 0;
 }
 
-int show (){
+void show (){
 
 
     return 0;

@@ -1,13 +1,6 @@
-# include <stdio.h>
-
-# include <stdlib.h>
+# include "arr.h"
 
 const size_t FSIZE = sizeof(float);
-
-typedef struct vect_t{
-    float * data;
-    size_t size;
-} Vector;
 
 int new_vector (Vector * arr, size_t size){
     float * data = ( float * ) malloc(size * FSIZE);
