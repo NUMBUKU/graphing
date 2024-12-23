@@ -1,7 +1,8 @@
 .vscode
+build
+
+todo.txt
 
 *.exe
-*.txt
-
-arr.c
-arr.o
+*.o
+*.so
